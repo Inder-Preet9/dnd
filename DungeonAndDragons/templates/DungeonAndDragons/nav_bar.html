@@ -1,0 +1,60 @@
+<nav class="navbar navbar-expand-lg custom-navbar">
+  <div class="container-fluid px-4">
+
+    <!-- Logo -->
+    <a class="navbar-brand" href="#">
+      <img src="logo.png" alt="Logo" class="logo-img">
+    </a>
+
+    <!-- Toggle (mobile) -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Menu -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+
+      <!-- Center menu -->
+      <ul class="navbar-nav mx-auto menu-items">
+        <li class="nav-item"><a class="nav-link" href="#">ABOUT US</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">PRODUCTS</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">SPECIALITY CAKES</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">CONTACT US</a></li>
+      </ul>
+
+      <!-- Right side -->
+      <div class="d-flex align-items-center gap-3">
+
+        <!-- Search -->
+        <div class="nav-search">
+          <input type="text" placeholder="SEARCH" onkeyup="filterProducts()">
+          <i class="bi bi-search search-icon"></i>
+        </div>
+
+        <!-- Cart -->
+        <div class="cart-fa">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span>0</span>
+        </div>
+
+
+        <div class="auth-area">
+          {% if user.is_authenticated %}
+          <span class="nav-link">
+             <i class="bi bi-person-circle"></i>
+             Hi, {{ user.username }}</span>
+          <a class="nav-link logout-link" href="{% url 'logout' %}">Logout</a>
+          {% else %}
+          <a href="{% url 'login' %}" class="auth-icon" title="Login / Register">
+            <i class="bi bi-person-circle"></i>
+          </a>
+          {% endif %}
+
+</div>
+
+
+      </div>
+
+    </div>
+  </div>
+</nav>
