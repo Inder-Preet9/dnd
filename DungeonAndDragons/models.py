@@ -5,7 +5,7 @@ class Sweet(models.Model):
     category = models.CharField(max_length=50)
     price = models.IntegerField()
     quantity = models.IntegerField(default=0)
-    image = models.ImageField(upload_to="sweets/")
+    image = models.ImageField(upload_to="images/")
     is_available = models.BooleanField(default=True)
 
     def __str__(self):
