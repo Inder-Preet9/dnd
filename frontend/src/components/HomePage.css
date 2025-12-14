@@ -278,4 +278,17 @@ body {
       font-size: 13px;
       color: #aaa;
     }
- 
+ .auth-dropdown button {
+  border-color: #b28c52 !important;
+  color: #b28c52;
+}
+.auth-dropdown input {
+  border-color: #b28c52;
+  color: #5a3e1b;
+}
+.auth-dropdown button[type="submit"],
+.auth-dropdown button:not(:first-child) {
+  background-color: #b28c52;
+  color: white;
+  border-color: #b28c52;
+}

@@ -1,8 +1,11 @@
+require('dotenv').config();  // ← ADD THIS AT THE VERY TOP
+
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+const mongoose = require("mongoose");  // ← ADD THIS IMPORT
 
 const app = express();
 const PORT = 5000; // backend port
@@ -15,6 +18,11 @@ const users = [];
 
 // Secret key for JWT
 const SECRET = "mysecretkey";
+
+// === CONNECT TO MONGODB ATLAS ===
+mongoose.connect(process.env.MONGODB_URI)
+  .then(() => console.log("Connected to MongoDB Atlas successfully!"))
+  .catch(err => console.error("MongoDB connection error:", err));
 
 // REGISTER
 app.post("/api/auth/register", async (req, res) => {
@@ -42,9 +50,9 @@ app.post("/api/auth/login", async (req, res) => {
   res.json({ token });
 });
 
+const sweetsRoutes = require("./routes/sweets");
+app.use("/api/sweets", sweetsRoutes);
+
 app.listen(PORT, () => {
   console.log(`Backend running on http://localhost:${PORT}`);
 });
-
-const sweetsRoutes = require("./routes/sweets");
-app.use("/api/sweets", sweetsRoutes);

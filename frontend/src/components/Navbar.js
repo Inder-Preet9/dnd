@@ -3,6 +3,7 @@ import logo from "../images/banner4.png";
 import { useAuth } from "../AuthContext";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+
 const Navbar = () => {
   const { user, login, logout } = useAuth();
   const [showLogin, setShowLogin] = useState(false);
@@ -84,19 +85,17 @@ const Navbar = () => {
                 </a>
                 <ul className="dropdown-menu dropdown-menu-end">
                   {user ? (
-                    <>
-                      <li className="dropdown-item-text">Hi, {user.username}!</li>
-                      <li><hr className="dropdown-divider" /></li>
-                      <li>
-                        <button
-                          className="dropdown-item logout-link"
-                          onClick={logout}
-                        >
-                          Logout
-                        </button>
-                      </li>
-                    </>
+                    // Logged in: Show ONLY Logout (centered and clean)
+                    <li className="px-3 py-2">
+                      <button
+                        className="dropdown-item text-center fw-medium py-2"
+                        onClick={logout}
+                      >
+                        Logout
+                      </button>
+                    </li>
                   ) : (
+                    // Not logged in: Show Login & Register
                     <>
                       <li>
                         <button
